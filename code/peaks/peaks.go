@@ -1,16 +1,26 @@
 package peaks
 
+import (
+	"fmt"
+)
+
 var (
 	upPos = 0
 )
 
 // PrintPeaks print pos and value of peaks
 func PrintPeaks(data []int) string {
-	return ""
+	value := []int{}
+	pos := findPeaks(data)
+	for _, x := range pos {
+		value = append(value, data[x])
+	}
+
+	return fmt.Sprintf("pos %v peaks %v", pos, value)
 }
 
-// FindPeaks get pos of peaks
-func FindPeaks(data []int) []int {
+// findPeaks get pos of peaks
+func findPeaks(data []int) []int {
 	result := make([]int, 0)
 
 	for i := range data {
